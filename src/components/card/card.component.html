@@ -1,0 +1,18 @@
+<mat-card class="card" appearance="outlined">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <mat-card-title>{{ fish.name }}</mat-card-title>
+    <mat-card-subtitle>Water: {{ fish.water }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="fish.imageUrl" [alt]="'Photo of a' + fish.name">
+  <mat-card-content>
+    <div>
+      <p>Length: {{ fish.length }}cm</p>
+      <p>Colors: {{ fish.colors.join(", ") }}</p>
+      <p>Price: {{ fish.price }}€</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="session.addToCart(fish)">Add to cart</button>
+  </mat-card-actions>
+</mat-card>

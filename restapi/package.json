@@ -1,0 +1,14 @@
+{
+  "name": "restapi",
+  "version": "1.0.0",
+  "description": "DB Fish",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rosa",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "mssql": "^11.0.1"
+  }
+}

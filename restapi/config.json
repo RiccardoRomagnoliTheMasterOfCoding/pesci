@@ -1,0 +1,12 @@
+{
+    "user": "SA",
+    "password": "burbero2025",
+    "server": "PC1004BIS",
+    "database": "PESCI5F",
+    "options": {
+        "trustedconnection": true,
+        "trustServerCertificate": true,
+        "instancename": "MSSQLSERVER"
+    },
+    "port": 1433
+}

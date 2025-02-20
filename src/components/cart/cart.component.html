@@ -1,0 +1,17 @@
+<table mat-table [dataSource]="fishes">
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>amount</th>
+        <td mat-cell *matCellDef="let fish">{{ amounts.get(fish.id) }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let fish">{{ fish.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let fish">{{ amounts.get(fish.id) || 0 * fish.price }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

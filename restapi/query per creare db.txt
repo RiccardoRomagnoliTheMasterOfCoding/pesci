@@ -1,0 +1,6 @@
+create table Clients(
+ID int primary key identity(1, 1),
+Name varchar(50) not null,
+Email varchar(50) unique,
+SignUpDate Date
+);
