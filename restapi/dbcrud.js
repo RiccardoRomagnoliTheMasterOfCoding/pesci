@@ -1,5 +1,6 @@
 const fs = require('fs');
 const sql = require('mssql');
+const crypto = require('crypto');
 
 const confPath = './config.json';
 
@@ -48,22 +49,38 @@ async function addUser(user) {
   }
 }
 
-async function getLogin(email) {
+async function login(email, password) {
   try {
-    let  pool = await  sql.connect(config);
-    let  cliente = await  pool.request()
+    let pool = await  sql.connect(config);
+    let result = await  pool.request()
         .input('email', sql.NVarChar, email)
-        .query(`SELECT * from ${TABLE} where ${Email} = @email`);
-    return  cliente.recordsets;
+        .query(`SELECT * from ${TABLE} where ${EMAIL} = @email`);
+    //return  cliente.recordsets;
+
+    if (result.recordsets.length > 0 && result.recordsets[0].length > 0) {
+      let user = result.recordsets[0][0];
+
+      if (user.HashedPassword == hash(password, user.Salt)) {
+        return user;
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
   } catch (error) {
     console.log(error);
   }
+}
+
+function hash(plaintext, salt) {
+  return crypto.createHmac('sha256', salt).update(plaintext).digest('hex');
 }
 
 
 module.exports = {
   getUsers:  getUsers,
   getUser:  getUser,
-  getLogin: getLogin,
+  login: login,
   addUser: addUser
 }

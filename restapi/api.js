@@ -44,9 +44,9 @@ router.route('/addUser').post((req, res) => {
 });
 
 router.route('/login').post((req, res) => {
-    db.getLogin(req.body.email)
+    db.login(req.body.email, req.body.password)
     .then((data) => {
-        res.json(data[0]);
+        res.json(data);
     });
 });
 

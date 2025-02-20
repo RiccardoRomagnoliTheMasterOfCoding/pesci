@@ -2,5 +2,9 @@ create table Clients(
 ID int primary key identity(1, 1),
 Name varchar(50) not null,
 Email varchar(50) unique,
-SignUpDate Date
+SignUpDate Date,
+Salt char(32) not null,
+HashedPassword char(64) not null,
+Role varchar(16) not null,
+constraint UQ_Salt unique (Salt)
 );
