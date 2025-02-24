@@ -8,6 +8,7 @@ export class SessionService {
 
   constructor() { }
 
+  API_ENDPOINT: string = "http://localhost:3000/api";
   loggedIn: boolean = false;
   user: User | undefined = undefined;
 
@@ -58,9 +59,22 @@ export class SessionService {
     }
   ]
 
-  login(userName: string, password: string) {
-    this.user = this.users.find(user => user.userName === userName && user.password === password);
-    sessionStorage.setItem('user', JSON.stringify(this.user));
+  async login(email: string, password: string) {
+    // this.user = this.users.find(user => user.userName === userName && user.password === password);
+    const creds = { 'email': email, 'password': password };
+    fetch(this.API_ENDPOINT + '/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(creds)
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.user = data;
+      sessionStorage.setItem('user', JSON.stringify(this.user));
+    })
+    .catch(err => console.error('Error logging in:', err));
   }
 
   logout() {

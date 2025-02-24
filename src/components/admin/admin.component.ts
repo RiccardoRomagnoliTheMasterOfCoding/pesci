@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
@@ -10,11 +10,18 @@ import { MatTableModule } from '@angular/material/table';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit {
-  displayedColumns: string[] = [ 'ID', 'Name', 'Email', 'SignUpDate' ];
+  constructor(private location: Location) {}
+
+  displayedColumns: string[] = [ 'ID', 'Name', 'Email', 'SignUpDate', 'Role', 'PfpUrl' ];
   clients: any[] = [];
 
   ngOnInit() {
-    this.getClients();
+    const user = sessionStorage.getItem('user');
+    if(user == null || JSON.parse(user).Role != "admin") {
+      this.location.back();
+    } else {
+      this.getClients();
+    }
   }
 
   getClients() {

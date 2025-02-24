@@ -1,7 +1,7 @@
 {
     "user": "SA",
     "password": "burbero2025",
-    "server": "PC2225BIS",
+    "server": "PC1004BIS",
     "database": "PESCI5F",
     "options": {
         "trustedconnection": true,

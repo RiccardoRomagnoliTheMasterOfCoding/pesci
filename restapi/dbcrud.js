@@ -58,10 +58,12 @@ async function login(email, password) {
     //return  cliente.recordsets;
 
     if (result.recordsets.length > 0 && result.recordsets[0].length > 0) {
-      let user = result.recordsets[0][0];
+      const user = result.recordsets[0][0];
 
       if (user.HashedPassword == hash(password, user.Salt)) {
-        return user;
+        const { ID, Name, Email, SignUpDate, Role, PfpUrl } = user;
+        const loggedUser = { ID, Name, Email, SignUpDate, Role, PfpUrl };
+        return loggedUser;
       } else {
         return null;
       }

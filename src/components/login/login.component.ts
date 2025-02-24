@@ -19,8 +19,8 @@ export class LoginComponent {
   email = "";
   password = "";
 
-  login() {
-    this.session.login(this.email, this.password);
+  async login() {
+    await this.session.login(this.email, this.password);
     window.history.back();
   }
 }
