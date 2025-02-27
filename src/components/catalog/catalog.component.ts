@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { SessionService } from '../../services/session.service';
 
@@ -10,6 +10,10 @@ import { SessionService } from '../../services/session.service';
   styleUrl: './catalog.component.css',
   providers: [ SessionService ]
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit {
   session = inject(SessionService);
+
+  async ngOnInit(): Promise<void> {
+    await this.session.fetchCatalog();
+  }
 }

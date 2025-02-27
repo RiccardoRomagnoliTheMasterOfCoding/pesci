@@ -1,5 +1,5 @@
 <div style="margin: 1em; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-    @for (fish of session.catalog; track fish.id) {
+    @for (fish of session.catalog; track fish.Id) {
         <app-card [fish]="fish"></app-card>
     }
 </div>

@@ -7,13 +7,13 @@ class User {
 type Water = "saltwater" | "freshwater";
 
 class Fish {
-    id!: number;
-    name!: string;
-    water!: Water;
-    colors!: string[];
-    length!: number;
-    imageUrl!: string;
-    price!: number;
+    Id!: number;
+    Name!: string;
+    Water!: Water;
+    Colors!: string[];
+    Length!: number;
+    ImageUrl!: string;
+    Price!: number;
 }
 
 export { User, Fish };

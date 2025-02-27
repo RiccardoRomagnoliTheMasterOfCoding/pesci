@@ -1,15 +1,15 @@
 <mat-card class="card" appearance="outlined">
   <mat-card-header>
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
-    <mat-card-title>{{ fish.name }}</mat-card-title>
-    <mat-card-subtitle>Water: {{ fish.water }}</mat-card-subtitle>
+    <mat-card-title>{{ fish.Name }}</mat-card-title>
+    <mat-card-subtitle>Water: {{ fish.Water }}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image [src]="fish.imageUrl" [alt]="'Photo of a' + fish.name">
+  <img mat-card-image [src]="fish.ImageUrl" [alt]="'Photo of a' + fish.Name">
   <mat-card-content>
     <div>
-      <p>Length: {{ fish.length }}cm</p>
-      <p>Colors: {{ fish.colors.join(", ") }}</p>
-      <p>Price: {{ fish.price }}€</p>
+      <p>Length: {{ fish.Length }}cm</p>
+      <p>Colors: {{ fish.Colors.join(", ") }}</p>
+      <p>Price: {{ fish.Price }}€</p>
     </div>
   </mat-card-content>
   <mat-card-actions>

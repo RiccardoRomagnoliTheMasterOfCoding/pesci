@@ -10,7 +10,7 @@ import { Fish } from '../../ts/models';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  displayedColumns: string[] = [ 'amount', 'name', 'price' ];
+  displayedColumns: string[] = [ 'Amount', 'Name', 'Price' ];
   fishes: Fish[] = [];
   amounts = new Map<number, number>();
 
@@ -19,8 +19,8 @@ export class CartComponent {
     if (cartJson !== null) {
       const cart: Fish[] = JSON.parse(cartJson);
       cart.forEach(f => {
-        let currentAmount = this.amounts.get(f.id) || 0;
-        this.amounts.set(f.id, currentAmount + 1);
+        let currentAmount = this.amounts.get(f.Id) || 0;
+        this.amounts.set(f.Id, currentAmount + 1);
       });
     }
 

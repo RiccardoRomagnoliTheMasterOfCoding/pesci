@@ -14,6 +14,6 @@ import { SessionService } from '../../services/session.service';
   providers: [ SessionService ]
 })
 export class CardComponent {
-  @Input() fish: Fish = { id: 0, name: "", water: "freshwater", colors: [], length: 0, imageUrl: "", price: 0 }
+  @Input() fish: Fish = { Id: 0, Name: "", Water: "freshwater", Colors: [], Length: 0, ImageUrl: "", Price: 0 }
   session = inject(SessionService);
 }

@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
   getClients() {
     fetch('http://127.0.0.1:3000/api/getUsers')
       .then(res => res.json())
-      .then(data => this.clients = data )
+      .then(data => this.clients = data)
       .catch(err => console.error('Error fetching users', err));
   }
 }

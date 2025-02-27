@@ -50,6 +50,13 @@ router.route('/login').post((req, res) => {
     });
 });
 
+router.route('/catalog').get((req, res) => {
+    db.getCatalog()
+    .then((data) => {
+        res.json(data);
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

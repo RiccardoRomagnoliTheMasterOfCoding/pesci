@@ -7,6 +7,7 @@ const confPath = './config.json';
 var config = JSON.parse(fs.readFileSync(confPath));
 
 const TABLE = 'Clients';
+const CATALOG_TABLE = 'Catalog';
 const ID = 'ID';
 const NAME = 'Name';
 const EMAIL = 'Email';
@@ -75,14 +76,30 @@ async function login(email, password) {
   }
 }
 
+async function getCatalog() {
+  try {
+    let pool = await sql.connect(config);
+    let result = await pool.request()
+      .query(`SELECT * FROM ${CATALOG_TABLE}`);
+    
+    if (result.recordsets.length > 0 && result.recordsets[0].length > 0) {
+      let fishes = result.recordsets[0];
+      fishes.forEach(fish => {
+        fish.Colors = fish.Colors.split(', ').map(color => color.trim());
+      });
+
+      return fishes;
+    }
+    return null;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 function hash(plaintext, salt) {
   return crypto.createHmac('sha256', salt).update(plaintext).digest('hex');
 }
 
 
-module.exports = {
-  getUsers:  getUsers,
-  getUser:  getUser,
-  login: login,
-  addUser: addUser
-}
+module.exports = { getUsers, getUser, login, addUser, getCatalog }
